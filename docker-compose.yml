@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  php:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: php
+
+  composer:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint:
+      - composer
+
+  phpunit:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint:
+      - /app/vendor/bin/phpunit
